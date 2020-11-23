@@ -23,13 +23,5 @@
     "description": "Детали акции ... ",
     "datePosted": "25.02.2020"
   }],
-  "orders": [],
-  "sliderData": [{
-    "url": ""
-  }],
-  "infoPages": [{
-    "url": "about",
-    "name": "О нас",
-    "content": "Информация ..."
-  }]
+  "orders": []
 }
