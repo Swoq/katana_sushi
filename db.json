@@ -1,0 +1,35 @@
+{
+  "products": [{
+    "url": "pizza_mozzarella",
+    "productName": "Pizza Mozzarella",
+    "productDescription": "About Pizza ... ",
+    "price": 155.05,
+    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"],
+    "weight": 250,
+    "relatedProductIds": [7,12,98],
+    "spicy": false,
+    "categoryId": 3,
+    "recommended": true 
+  }],
+  "productsCategories": [{
+    "url": "vegeterian",
+    "name": "Вегетарианские",
+    "description": "More details ... ",
+  }],
+  "recommendations": [2,5,7,11], // products ids, instead of 'recommended' flag if you prefer
+  "actions": [{
+    "url": "privedi_druga",
+    "name": "Акция Приведи друга!",
+    "description": "Детали акции ... ",
+    "datePosted": "25.02.2020",
+  }],
+  "orders": [],
+  "sliderData": [{
+    "url": "",
+  }],
+  "infoPages": [{ // optional
+    "url": "about",
+    "name": "О нас",
+    "content": "Информация ...",
+  }]
+}
