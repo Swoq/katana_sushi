@@ -16,7 +16,7 @@
     "name": "Вегетарианские",
     "description": "More details ... ",
   }],
-  "recommendations": [2,5,7,11], // products ids, instead of 'recommended' flag if you prefer
+  "recommendations": [2,5,7,11],
   "actions": [{
     "url": "privedi_druga",
     "name": "Акция Приведи друга!",
@@ -27,7 +27,7 @@
   "sliderData": [{
     "url": "",
   }],
-  "infoPages": [{ // optional
+  "infoPages": [{
     "url": "about",
     "name": "О нас",
     "content": "Информация ...",
