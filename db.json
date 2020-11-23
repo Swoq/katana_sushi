@@ -1,17 +1,20 @@
 {
   "products": [{
+    "url": "pizza_mozzarella",
     "productName": "Pizza Mozzarella",
     "productDescription": "About Pizza ... ",
-    "price": 155.05,
-    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"],
-    "categoryId": 3
+    "price": 155.05
   }],
+  "productsDetail": [{
+    "productId": 1,
+    "categoryId": 3,
+    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
+  }]
   "productsCategories": [{
     "url": "vegeterian",
     "name": "Вегетарианские",
     "description": "More details ... "
   }],
-  "recommendations": [2,5,7,11],
   "actions": [{
     "url": "privedi_druga",
     "name": "Акция Приведи друга!",
