@@ -9,7 +9,7 @@
     "productId": 1,
     "categoryId": 3,
     "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
-  }]
+  }],
   "productsCategories": [{
     "url": "vegeterian",
     "name": "Вегетарианские",
