@@ -4,14 +4,14 @@
     "productName": "Pizza Mozzarella",
     "productDescription": "About Pizza ... ",
     "price": 155.05,
-    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
+    "images": ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg", "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]
   }, 
   {
     "url": "pizza_four_cheese",
     "productName": "Pizza Four Seasons",
     "productDescription": "About Pizza ... ",
     "price": 155.05,
-    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
+    "images": ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg", "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]
   }],
   "productsDetail": [{
     "productId": 0,
