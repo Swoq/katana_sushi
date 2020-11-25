@@ -3,18 +3,23 @@
     "url": "pizza_mozzarella",
     "productName": "Pizza Mozzarella",
     "productDescription": "About Pizza ... ",
-    "price": 155.05
+    "price": 155.05,
+    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
   }, 
   {
     "url": "pizza_four_cheese",
     "productName": "Pizza Four Seasons",
     "productDescription": "About Pizza ... ",
-    "price": 155.05
+    "price": 155.05,
+    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
   }],
   "productsDetail": [{
+    "productId": 0,
+    "categoryId": 3
+  }, 
+  {
     "productId": 1,
-    "categoryId": 3,
-    "images": ["path/to/cdn.jpg", "relative/path/to/img.jpg"]
+    "categoryId": 1
   }],
   "productsCategories": [{
     "url": "vegeterian",
