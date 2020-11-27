@@ -59,19 +59,29 @@
     "url": "privedi_druga_first",
     "name": "Акция Приведи друга 1!",
     "description": "Детали акции ... ",
-    "datePosted": "25.02.2020"
+    "datePosted": "25.02.2020",
+    "blockTypeId": 1
   },
   {
     "url": "privedi_druga_second",
     "name": "Акция Приведи друга 2!",
     "description": "Детали акции ... ",
-    "datePosted": "25.02.2020"
+    "datePosted": "25.02.2020",
+    "blockTypeId": 2
   },
   {
     "url": "privedi_druga_third",
     "name": "Акция Приведи друга! 3",
     "description": "Детали акции ... ",
-    "datePosted": "25.02.2020"
+    "datePosted": "25.02.2020",
+    "blockTypeId": 2
+  },
+  {
+    "url": "privedi_druga_third",
+    "name": "Акция Приведи друга! 3",
+    "description": "Детали акции ... ",
+    "datePosted": "25.02.2020",
+    "blockTypeId": 1
   }],
   "orders": []
 }
