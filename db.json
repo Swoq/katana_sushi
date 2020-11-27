@@ -60,28 +60,28 @@
     "name": "Акция Приведи друга 1!",
     "description": "Детали акции ... ",
     "datePosted": "25.02.2020",
-    "blockTypeId": 1
+    "img": "https://images.pizza33.ua/slider/w0M0eLAz8w.jpg"
   },
   {
     "url": "privedi_druga_second",
     "name": "Акция Приведи друга 2!",
     "description": "Детали акции ... ",
     "datePosted": "25.02.2020",
-    "blockTypeId": 2
+    "img": "https://images.pizza33.ua/slider/EKzWX26Ho2.jpg"
   },
   {
     "url": "privedi_druga_third",
     "name": "Акция Приведи друга! 3",
     "description": "Детали акции ... ",
     "datePosted": "25.02.2020",
-    "blockTypeId": 2
+    "img": "https://images.pizza33.ua/slider/w0M0eLAz8w.jpg"
   },
   {
     "url": "privedi_druga_third",
     "name": "Акция Приведи друга! 3",
     "description": "Детали акции ... ",
     "datePosted": "25.02.2020",
-    "blockTypeId": 1
+    "img": "https://images.pizza33.ua/slider/EKzWX26Ho2.jpg"
   }],
   "orders": []
 }
