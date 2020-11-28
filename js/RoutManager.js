@@ -1,30 +1,76 @@
+import MainManager from "./MainManager.js";
+
 export default class RoutManager {
-    constructor(statement_list) {
+    constructor({products_end_poins, actions_end_poins, categories_end_poins}, mainManager) {
         window.addEventListener('hashchange', () => this.onRouteChange());
-        this.statement_list = statement_list;
+
+        this.end_points = {
+            "catalog" : categories_end_poins,
+            "action" : actions_end_poins,
+            "product" : products_end_poins,
+            "cart" : products_end_poins,
+            "order" : null
+        }
+
+        this.mainManager = mainManager;
+
 
         if (window.location.hash)
             if (!this.loadContent(window.location.hash.substring(1)))
-                history.pushState(null, null, '/');
+                this.loadDefaultMain();
     }
 
     onRouteChange() {
         const hashLocation = window.location.hash.substring(1);
+        const splitedHash = hashLocation.split('/');
 
-        if (!this.loadContent(hashLocation))
-            history.pushState(null, null, '/');
+        console.log("Hash changed!")
+        console.log(splitedHash);
+
+        let mainLocation;
+        let subLocation;
+
+        if (splitedHash.length == 2){
+            mainLocation = splitedHash[0];
+            subLocation = splitedHash[1];
+
+            if (!this.loadContent(mainLocation, subLocation))
+                this.loadDefaultMain();
+        }
+
+        else if (splitedHash.length == 1) {
+            mainLocation = splitedHash[0];
+
+            if (!this.loadContent(mainLocation))
+                this.loadDefaultMain();
+        }
+        else {
+            this.loadDefaultMain();
+        }
+
     }
 
-    loadContent(hash) {
-        fetch("http://localhost:63342/katana_sushi/layouts/catalog.html")
-            .then((response) => response.text())
-            .then((html) => {
-                console.log(html);
-                // let html_body = html
-                // document.getElementById("content").innerHTML = ;
-            })
-            .catch((error) => {
-                console.warn(error);
-            });
+    
+
+    loadContent(mainLocation, subLocation=null) {
+        
+        if (mainLocation in this.end_points) {
+            if (subLocation != null && this.end_points[mainLocation].includes(subLocation)) {
+                this.mainManager.loadByHash(mainLocation, subLocation);
+                return true;
+            }
+            else if (subLocation == null){
+                this.mainManager.loadByHash(mainLocation);
+                return true;
+            }
+            
+        }
+        return false;
+        
+    }
+
+    loadDefaultMain(){
+        history.pushState(null, null, '/');
+        this.mainManager.loadMainPage();
     }
 }

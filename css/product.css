@@ -104,10 +104,6 @@ body{
   box-shadow:0 5px 30px black;
 }
 
-.dropdown-menu .show{
-
-}
-
 .total-header-section{
   border-bottom:1px solid #d2d2d2;
 }
@@ -150,4 +146,17 @@ body{
   right:50px;
   border:10px solid transparent;
   border-bottom-color:#fff;
+}
+
+.footer-custom {
+  background-color: white;
+}
+
+.img-holder {
+  background-image: url("https://images.pizza33.ua/slider/EKzWX26Ho2.jpg");
+  background-size: cover;
+  margin-bottom: 15px;
+  width: 95%; 
+  height: 300px; 
+  border-radius: 21px 21px 0 0;
 }
