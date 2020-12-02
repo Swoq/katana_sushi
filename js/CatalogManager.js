@@ -172,7 +172,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Apple iPad</h4>
@@ -193,7 +193,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Sony Headphone</h4>
@@ -214,7 +214,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Macbook Air</h4>
@@ -235,7 +235,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Nikon DSLR</h4>
@@ -260,7 +260,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Sony Play Station</h4>
@@ -281,7 +281,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Macbook Pro</h4>
@@ -302,7 +302,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Bose Speaker</h4>
@@ -323,7 +323,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Samsung Galaxy S8</h4>
@@ -348,7 +348,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Apple iPhone</h4>
@@ -369,7 +369,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Canon DSLR</h4>
@@ -390,7 +390,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Google Pixel</h4>
@@ -411,7 +411,7 @@ export default class CatalogManager {
                                 <div class="col-sm-3">
                                     <div class="thumb-wrapper">
                                         <div class="img-box">
-                                            <img src="../assets/products/3-6-450x450.jpg" class="img-fluid" alt="">
+                                            <img src="https://dummyimage.com/450x450/000/fff.png" class="img-fluid" alt="">
                                         </div>
                                         <div class="thumb-content">
                                             <h4>Apple Watch</h4>
