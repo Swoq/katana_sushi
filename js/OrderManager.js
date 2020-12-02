@@ -268,7 +268,7 @@ export default class OrderManager {
                 <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>
             </div>
             <hr>
-            <a href="/#catalog" class="btn btn-dark" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to catalog</a>
+            <a href="#catalog" class="btn btn-dark" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to catalog</a>
         </div>
     </article>
 </div>
