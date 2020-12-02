@@ -99,25 +99,29 @@ export default class CartManager {
                 return subHash === product.url
             });
             
-            let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
-            let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
-            let totalEl = document.getElementById("total");
+            if (product2AddList != null){
+                let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
+                let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
+                let totalEl = document.getElementById("total");
 
-            product2AddList.forEach(product => {
-                // Increase label
-                this.amountOfProducts ++;
-                productNumberLabelEl1.innerText = this.amountOfProducts;
-                productNumberLabelEl2.innerText = this.amountOfProducts;
+                
+                product2AddList.forEach(product => {
+                    // Increase label
+                    this.amountOfProducts ++;
+                    productNumberLabelEl1.innerText = this.amountOfProducts;
+                    productNumberLabelEl2.innerText = this.amountOfProducts;
 
-                // Increase Total
-                this.total += product.price;
-                totalEl.innerText = ("$ " + this.total.toFixed(2));
+                    // Increase Total
+                    this.total += product.price;
+                    totalEl.innerText = ("$ " + this.total.toFixed(2));
 
-                let countEl = document.getElementById(subHash);
-                let amount = this.getAmountFromLocalStorage(subHash);
-                countEl.innerText = ("Quantity: " + amount);
+                    let countEl = document.getElementById(subHash);
+                    let amount = this.getAmountFromLocalStorage(subHash);
+                    countEl.innerText = ("Quantity: " + amount);
 
             });
+            }
+            
         })
     }
 
