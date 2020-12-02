@@ -6,6 +6,11 @@ export default class CartManager {
         this.hash = "cart"
         this.amountOfProducts = 0;
         this.total = 0;
+        this.status = false;
+
+        
+        this.checkout_btn = document.getElementById("checkout_btn");
+        this.clear_cart_btn = document.getElementById("clear_cart_btn");
     }
 
     getHash(){
@@ -13,37 +18,51 @@ export default class CartManager {
     }
 
     onLoad(subHash) {
-
         if (subHash == null){
             history.pushState(null, null, '/');
             return false;
         }
         else {
-            history.pushState(null, null, '/#catalog');
-            if(this.addProductToLocalStorage(subHash))
-                this.addNewProductsByHashes([{url : subHash, amount : 1}]);
-            else
-                this.addExistProduct(subHash);
             
+            if(subHash == 'clear'){
+                history.pushState(null, null, '/#catalog');
+                this.clearCart();
+            }
+            else if(this.addProductToLocalStorage(subHash)){
+                history.pushState(null, null, '/#catalog');
+                this.addNewProductsByHashes([{url : subHash, amount : 1}]);
+            }
+            else {
+                history.pushState(null, null, '/#catalog');
+                this.addExistProduct(subHash);
+            }
         }
+
         return true;
     }
 
-    addNewProductsByHashes(subHashes){
+    turnOnButtons(){
+        this.status = true;
+        this.checkout_btn.removeAttribute('disabled');
+        this.clear_cart_btn.removeAttribute('disabled');
+    }
 
+    turnOffButtons(){
+        this.status = false;
+        this.checkout_btn.setAttribute('disabled');
+        this.clear_cart_btn.setAttribute('disabled');
+    }
+
+    addNewProductsByHashes(subHashes){
         get_data().then(data => {
-            let urls =[];
+            let urls = [];
             subHashes.forEach(element => {
                 urls.push(element.url);
             });
 
-            console.log("To add urls: " + urls);
-
             let product2AddList = data.products.filter(product => {
                 return urls.includes(product.url);
             });
-
-            console.log("To add products: " + product2AddList);
             
             let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
             let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
@@ -67,7 +86,10 @@ export default class CartManager {
                 })[0].amount;
                 cartSection.innerHTML += this.getCartProductTemplate(product, amount);
             });
-        })
+
+            if (!this.status && this.amountOfProducts > 0)
+                this.turnOnButtons();
+        });
     }
 
     addExistProduct(subHash){
@@ -93,7 +115,6 @@ export default class CartManager {
 
                 let countEl = document.getElementById(subHash);
                 let amount = this.getAmountFromLocalStorage(subHash);
-                console.log(amount);
                 countEl.innerText = ("Quantity: " + amount);
 
             });
@@ -117,7 +138,24 @@ export default class CartManager {
     loadCartFromLocalStorage(){
         let cart_list = JSON.parse(localStorage.getItem("cart"));
 
+        
+        let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
+        let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
+        let totalEl = document.getElementById("total");
+        let cartSection = document.getElementById("cart-dropdown");
+
+        cartSection.innerHTML = "";
+        totalEl.innerText = "$ 0";
+        productNumberLabelEl1.innerText = 0;
+        productNumberLabelEl2.innerText = 0;
+
+        this.total = 0;
+        this.amountOfProducts = 0;
+
         this.addNewProductsByHashes(cart_list);
+        
+        if (this.status == true && this.amountOfProducts == 0)
+            this.turnOffButtons();
     }
 
     addProductToLocalStorage(productUrl){
@@ -161,6 +199,11 @@ export default class CartManager {
 
     updateLocalStorageCart(newCart){
         localStorage.setItem("cart", JSON.stringify(newCart));
+    }
+
+    clearCart(){
+        localStorage.setItem("cart", JSON.stringify([]));
+        this.loadCartFromLocalStorage();
     }
     
 }

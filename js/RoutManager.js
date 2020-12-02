@@ -1,7 +1,7 @@
 import MainManager from "./MainManager.js";
 
 export default class RoutManager {
-    constructor({products_end_poins, actions_end_poins, categories_end_poins}, mainManager) {
+    constructor({products_end_poins, actions_end_poins, categories_end_poins, orders_end_points}, mainManager) {
         window.addEventListener('hashchange', () => this.onRouteChange());
 
         this.end_points = {
@@ -9,23 +9,19 @@ export default class RoutManager {
             "action" : actions_end_poins,
             "product" : products_end_poins,
             "cart" : products_end_poins,
-            "order" : null
+            "order" : orders_end_points
         }
 
         this.mainManager = mainManager;
 
 
         if (window.location.hash)
-            if (!this.loadContent(window.location.hash.substring(1)))
-                this.loadDefaultMain();
+            this.loadDefaultMain();
     }
 
     onRouteChange() {
         const hashLocation = window.location.hash.substring(1);
         const splitedHash = hashLocation.split('/');
-
-        console.log("Hash changed!")
-        console.log(splitedHash);
 
         let mainLocation;
         let subLocation;
