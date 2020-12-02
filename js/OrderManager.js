@@ -38,7 +38,7 @@ export default class OrderManager {
         this.containerEl.innerHTML = `
 <div class="container">
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4 badge-dark" src="../assets/sushi.svg" alt="" width="100" height="100">
+      <img class="d-block mx-auto mb-4 badge-dark" src="https://www.flaticon.com/svg/static/icons/svg/129/129300.svg" alt="" width="100" height="100">
       <h2>Checkout form</h2>
       <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
         has a validation state that can be triggered by attempting to submit the form without completing it.</p>
