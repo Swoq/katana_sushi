@@ -56,32 +56,32 @@
     "description": "More details ... "
   }],
   "actions": [{
-    "url": "privedi_druga_first",
-    "name": "Акция Приведи друга 1!",
-    "description": "Детали акции ... ",
-    "datePosted": "25.02.2020",
-    "img": "https://images.pizza33.ua/slider/w0M0eLAz8w.jpg"
+    "url": "promotion_first",
+    "name": "Promotion 1",
+    "description": "Promotion details lorem ipsum.. ",
+    "datePosted": "21.02.2020",
+    "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+1"
   },
   {
     "url": "privedi_druga_second",
-    "name": "Акция Приведи друга 2!",
+    "name": "Promotion details lorem ipsum..",
     "description": "Детали акции ... ",
     "datePosted": "25.02.2020",
-    "img": "https://images.pizza33.ua/slider/EKzWX26Ho2.jpg"
+    "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+2"
   },
   {
     "url": "privedi_druga_third",
-    "name": "Акция Приведи друга! 3",
-    "description": "Детали акции ... ",
-    "datePosted": "25.02.2020",
-    "img": "https://images.pizza33.ua/slider/w0M0eLAz8w.jpg"
+    "name": "Promotion 3",
+    "description": "Promotion details lorem ipsum..",
+    "datePosted": "20.02.2020",
+    "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+3"
   },
   {
     "url": "privedi_druga_third",
-    "name": "Акция Приведи друга! 3",
-    "description": "Детали акции ... ",
-    "datePosted": "25.02.2020",
-    "img": "https://images.pizza33.ua/slider/EKzWX26Ho2.jpg"
+    "name": "Promotion 4",
+    "description": "Promotion details lorem ipsum..",
+    "datePosted": "26.02.2020",
+    "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+4"
   }],
   "orders": []
 }
