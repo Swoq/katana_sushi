@@ -83,5 +83,6 @@
     "datePosted": "26.02.2020",
     "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+4"
   }],
-  "orders": []
+  "orders": [],
+  "info": {"someInfo": "Information"}
 }
