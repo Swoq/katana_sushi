@@ -1,0 +1,41 @@
+{
+  "name": "katana_sushi",
+  "version": "1.0.0",
+  "description": "eCommerce",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js --mode production",
+    "dev": "webpack --config webpack.config.js --mode development",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swoq/katana_sushi.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Swoqe <misha.kratyuk@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swoq/katana_sushi/issues"
+  },
+  "browsersList": [
+    "> 0.25%, not dead"
+  ],
+  "homepage": "https://github.com/Swoq/katana_sushi#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.10",
+    "babel-jest": "^26.6.3",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^4.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0"
+  }
+}

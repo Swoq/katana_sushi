@@ -1,4 +1,4 @@
-import {sendRequest} from "./index.js";
+import {sendRequest} from "./util";
 
 const postRequestUrl = 'https://my-json-server.typicode.com/Swoq/katana_sushi/orders';
 
@@ -19,14 +19,14 @@ export default class OrderManager {
             this.loadCheckout();
         }
         else {
-            this.loadOrderById(subHash);
+            return false;
         }
         return true;
     }
 
     showLoading(){
         return `
-        <div class="text-center" style="background-color: white; opacity: 0,5; height: 500px;">
+        <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
           <span class="sr-only" >Loading...</span>
         </div>

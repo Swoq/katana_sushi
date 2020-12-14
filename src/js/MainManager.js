@@ -1,5 +1,3 @@
-import {get_data} from "./index.js";
-
 export default class MainManager {
     constructor(managers, homeManager){
         this.managers = managers;

@@ -1,4 +1,4 @@
-import {get_data} from "./index.js";
+import {get_data} from "./util";
 
 export default class CatalogManager {
     constructor(containerEl){

@@ -1,4 +1,4 @@
-import {get_data} from "./index.js"
+import {get_data} from "./util";
 
 export default class HomeManager {
     constructor(contantEl){
@@ -21,7 +21,7 @@ export default class HomeManager {
 
     showLoading(){
         return `
-        <div class="text-center" style="background-color: white; opacity: 0,5; height: 500px;">
+        <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
           <span class="sr-only" >Loading...</span>
         </div>
@@ -62,6 +62,9 @@ export default class HomeManager {
             </div>
             `
         })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     loadMainPage(){
@@ -93,6 +96,9 @@ export default class HomeManager {
             `;
 
             this.attachSliderLogic();
+        })
+        .catch(error => {
+            console.log(error);
         });
 
         
