@@ -1,30 +1,6 @@
-export const requestURL = 'https://my-json-server.typicode.com/Swoq/katana_sushi/db';
+import {get_data} from "./async-util";
 
-export function sendRequest(method, url, body=null) {
-    return fetch(url, {method: method, body: body}).then(response => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-        return response.json()
-    })
-        .catch(error => {
-            console.log(error);
-        });
-}
-
-export function get_data(){
-    return new Promise ((resolve, reject) => {
-        sendRequest('GET', requestURL)
-            .then(data => {
-                resolve(data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    })
-}
-
-export function init_end_points(){
+export default function init_end_points(){
     return new Promise((resolve, reject) => {
         get_data().then(data => {
             let products_end_poins = [];
@@ -49,8 +25,8 @@ export function init_end_points(){
             data.orders.forEach(element =>{
                 orders_end_poins.push(element)
             });
-
             resolve({products_end_poins, actions_end_poins, categories_end_poins, orders_end_poins});
         })
     })
 }
+

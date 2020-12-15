@@ -1,4 +1,4 @@
-import {init_end_points} from "./util";
+import init_end_points from "./util";
 
 import CartManager from "./CartManager.js";
 import CatalogManager from "./CatalogManager.js";

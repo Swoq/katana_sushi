@@ -1,4 +1,4 @@
-import {get_data} from "./util";
+import {get_data} from "./async-util";
 
 export default class ProductManager {
     constructor(contantEl){

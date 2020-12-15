@@ -1,4 +1,4 @@
-import {sendRequest} from "./util";
+import {sendRequest} from "./async-util";
 
 const postRequestUrl = 'https://my-json-server.typicode.com/Swoq/katana_sushi/orders';
 
