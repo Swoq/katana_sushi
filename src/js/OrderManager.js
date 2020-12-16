@@ -179,22 +179,26 @@ export default class OrderManager {
         myTime.min = (today.getHours()+":"+today.getMinutes());
     }
 
-    attachEventLister(){
-        const btnEl = document.getElementById("checkout-submit");
-        let self = this;
-
+    formValidation(){
         let forms = document.getElementsByClassName('needs-validation');
 
         Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-    
-            form.classList.add('was-validated')
+                if (form.checkValidity() === false) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
             }, false)
         });
+    }
+
+    attachEventLister(){
+        const btnEl = document.getElementById("checkout-submit");
+        let self = this;
+
+        this.formValidation();
 
         btnEl.addEventListener('click', function(){
             let validation = true;
@@ -231,17 +235,12 @@ export default class OrderManager {
                     history.pushState(null, null, ('/#order/'+data.id))
                     self.loadOrderById(data.id, order_data);
                     
-                })
-                .catch((error) => {
-                    console.log(error);
-                    self.showError();
                 });
             }
 
             
         });
     }
-
 
     loadOrderById(id, {firstName, lastName, phone, address, date, time}){
         this.containerEl.innerHTML = `

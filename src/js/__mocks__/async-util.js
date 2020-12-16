@@ -90,11 +90,12 @@ let data = `
 `
 let response = {data : data};
 
+let parse_data = {id: 1};
 
 export function get_data(){
     return Promise.resolve(JSON.parse(data));
 }
 
 export function sendRequest(){
-    return Promise.resolve(response);
+    return Promise.resolve(parse_data);
 }

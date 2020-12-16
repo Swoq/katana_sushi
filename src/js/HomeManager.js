@@ -62,16 +62,12 @@ export default class HomeManager {
             </div>
             `
         })
-        .catch(error => {
-            console.log(error);
-        });
     }
 
     loadMainPage(){
-        let contentEl = document.getElementById("page-content");
-        
         get_data().then(data => {
-            contentEl.innerHTML = `
+
+            this.contentEl.innerHTML = `
 
             ${this.mainTitleTemplate()}
             
@@ -97,11 +93,6 @@ export default class HomeManager {
 
             this.attachSliderLogic();
         })
-        .catch(error => {
-            console.log(error);
-        });
-
-        
     }
 
     getTitlesBlocks(){
@@ -169,14 +160,14 @@ export default class HomeManager {
 
         function next(direction){
 
-        if(direction=="next"){
+        if(direction==="next"){
             index++;
-            if(index==totalSlides){
+            if(index===totalSlides){
                 index=0;
             }
-        } 
+        }
         else{
-                if(index==0){
+                if(index===0){
                     index=totalSlides-1;
                 }
                 else{
@@ -187,7 +178,7 @@ export default class HomeManager {
         for(let i=0;i<slides.length;i++){
                 slides[i].classList.remove("active");
         }
-        slides[index].classList.add("active");     
+        slides[index].classList.add("active");
 
         }
 
@@ -207,8 +198,7 @@ export default class HomeManager {
         `
     }
 
-
-    actionSlideTemplate(action, index){
+    actionSlideTemplate(action){
         return `
             <div class="custom-item">
                 <img src="${action.img}">
@@ -219,9 +209,8 @@ export default class HomeManager {
         `;
     }
 
-   
-
     getHash(){
         return this.hash;
     }
+
 }

@@ -14,12 +14,10 @@ import '../css/product_detail.css'
 import '../css/product.css'
 import '../css/slider.css'
 
-
 let contentEl = document.getElementById("page-content");
-let shopCartEl = document.getElementById("shop_cart");
 
 let orderManager = new OrderManager(contentEl);
-let cartManager = new CartManager(shopCartEl);
+let cartManager = new CartManager();
 let productManager = new ProductManager(contentEl);
 let catalogManager = new CatalogManager(contentEl);
 let homeManager = new HomeManager(contentEl);

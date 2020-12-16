@@ -1,8 +1,7 @@
 import {get_data} from "./async-util";
 
 export default class CartManager {
-    constructor(shoppingCartEl){
-        this.shoppingCartEl = shoppingCartEl;
+    constructor(){
         this.hash = "cart"
         this.amountOfProducts = 0;
         this.total = 0;
@@ -49,12 +48,13 @@ export default class CartManager {
 
     turnOffButtons(){
         this.status = false;
-        this.checkout_btn.setAttribute('disabled');
-        this.clear_cart_btn.setAttribute('disabled');
+        this.checkout_btn.setAttribute('disabled', '');
+        this.clear_cart_btn.setAttribute('disabled', '');
     }
 
     addNewProductsByHashes(subHashes){
         get_data().then(data => {
+
             let urls = [];
             subHashes.forEach(element => {
                 urls.push(element.url);
@@ -72,6 +72,7 @@ export default class CartManager {
             product2AddList.forEach(product => {
                 // Increase label
                 let product_amount = this.getAmountFromLocalStorage(product.url);
+
                 this.amountOfProducts += product_amount;
                 productNumberLabelEl1.innerText = this.amountOfProducts;
                 productNumberLabelEl2.innerText = this.amountOfProducts;
@@ -86,7 +87,6 @@ export default class CartManager {
                 })[0].amount;
                 cartSection.innerHTML += this.getCartProductTemplate(product, amount);
             });
-
             if (!this.status && this.amountOfProducts > 0)
                 this.turnOnButtons();
         });
@@ -141,8 +141,6 @@ export default class CartManager {
 
     loadCartFromLocalStorage(){
         let cart_list = JSON.parse(localStorage.getItem("cart"));
-
-        
         let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
         let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
         let totalEl = document.getElementById("total");
@@ -158,7 +156,7 @@ export default class CartManager {
 
         this.addNewProductsByHashes(cart_list);
         
-        if (this.status == true && this.amountOfProducts == 0)
+        if (this.status === true && this.amountOfProducts === 0)
             this.turnOffButtons();
     }
 

@@ -21,25 +21,23 @@ export default class CatalogManager {
     loadByCategory(categoryUrl){
         get_data().then(data => {
             let categoryId;
-
+            let category_found = false;
             for (let j = 0; j < data.productsCategories.length; j++) {
-                if (data.productsCategories[j].url == categoryUrl){
+                if (data.productsCategories[j].url === categoryUrl){
                     categoryId = data.productsCategories[j].categoryId;
+                    category_found = true;
                     break;
                 }
             }
-            console.log(categoryId);
 
             let i = 0;
             let product_by_category = data.products.filter(function(obj) {
                 if (i < data.productsDetail.length){
-                    console.log(data.productsDetail[i])
-                    return (categoryId == data.productsDetail[i++].categoryId);
+                    return (categoryId === data.productsDetail[i++].categoryId);
                 }
                 else
                     return false;
             });
-            console.log(product_by_category);
 
             this.containerEl.innerHTML = `
             ${this.sectionTemplate()}
@@ -63,7 +61,8 @@ export default class CatalogManager {
                 </div>
             </div>
 
-            `
+            `;
+            return category_found;
         })
     }
 
@@ -91,7 +90,7 @@ export default class CatalogManager {
                 </div>
             </div>
             `
-        })
+        });
     }
 
     getRecomendation(product){
@@ -99,7 +98,7 @@ export default class CatalogManager {
         <div class="card bg-light mb-3">
                             <div class="card-header bg-dark text-white text-uppercase">Chief's Recomendation</div>
                             <div class="card-body">
-                                <img class="img-fluid" src="${product.images[0]}" />
+                                <img class="img-fluid" src="${product.images[0]}" alt="f"/>
                                 <h5 class="card-title">${product.productName}</h5>
                                 <p class="card-text">${product.productDescription}</p>
                                 <p class="bloc_left_price">${product.price} $</p>
@@ -152,6 +151,7 @@ export default class CatalogManager {
         ${this.youMayLikeTemplate()}
         `
     }
+
     youMayLikeTemplate(){
         return `
         <div class="container">
@@ -448,7 +448,7 @@ export default class CatalogManager {
 
     showLoading(){
         return `
-        <div class="text-center" style="background-color: white; opacity: 0,5; height: 500px;">
+        <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
           <span class="sr-only" >Loading...</span>
         </div>
