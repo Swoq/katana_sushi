@@ -3,12 +3,12 @@ export default class RoutManager {
         window.addEventListener('hashchange', () => this.onRouteChange());
 
         this.end_points = {
-            "catalog" : categories_end_poins,
-            "action" : actions_end_poins,
-            "product" : products_end_poins,
-            "cart" : products_end_poins,
-            "order" : orders_end_points
-        }
+            'catalog' : categories_end_poins,
+            'action' : actions_end_poins,
+            'product' : products_end_poins,
+            'cart' : products_end_poins,
+            'order' : orders_end_points
+        };
 
         this.mainManager = mainManager;
 

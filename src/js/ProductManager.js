@@ -1,9 +1,9 @@
-import {get_data} from "./async-util";
+import {get_data} from './async-util';
 
 export default class ProductManager {
     constructor(contantEl){
         this.contentEl = contantEl;
-        this.hash = "product";
+        this.hash = 'product';
     }
 
     onLoad(subHash){
@@ -36,8 +36,8 @@ export default class ProductManager {
                             </div> <!-- slider-product.// -->
                             <div class="img-small-wrap">
                                 ${product2Show.images.map(img => {
-                                    return `<div class="item-gallery"><img src="${img}"></div>`
-                                })}
+        return `<div class="item-gallery"><img src="${img}"></div>`;
+    })}
                             </div> <!-- slider-nav.// -->
                         </article> <!-- gallery-wrap .end// -->
                     </aside>
@@ -113,9 +113,9 @@ export default class ProductManager {
                     </aside> <!-- col.// -->
                 </div> <!-- row.// -->
             </div> <!-- card.// -->
-            `
+            `;
 
-        })
+        });
     }
 
     showLoading(){

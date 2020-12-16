@@ -1,9 +1,9 @@
-import {get_data} from "./async-util";
+import {get_data} from './async-util';
 
 export default class HomeManager {
     constructor(contantEl){
         this.contentEl = contantEl;
-        this.hash = "action"
+        this.hash = 'action';
         this.loadCounter = 0;
     }
 
@@ -60,8 +60,8 @@ export default class HomeManager {
                 </div>
               </div>
             </div>
-            `
-        })
+            `;
+        });
     }
 
     loadMainPage(){
@@ -92,7 +92,7 @@ export default class HomeManager {
             `;
 
             this.attachSliderLogic();
-        })
+        });
     }
 
     getTitlesBlocks(){
@@ -146,27 +146,27 @@ export default class HomeManager {
 
     attachSliderLogic(){
         let slides=document.querySelector('.custom-slider-items').children;
-        let nextSlide=document.querySelector(".right-slide");
-        let prevSlide=document.querySelector(".left-slide");
+        let nextSlide=document.querySelector('.right-slide');
+        let prevSlide=document.querySelector('.left-slide');
         let totalSlides=slides.length;
         let index=0;
 
         nextSlide.onclick=function () {
-            next("next");
-        }
+            next('next');
+        };
         prevSlide.onclick=function () {
-            next("prev");
-        }
+            next('prev');
+        };
 
         function next(direction){
 
-        if(direction==="next"){
-            index++;
-            if(index===totalSlides){
-                index=0;
+            if(direction==='next'){
+                index++;
+                if(index===totalSlides){
+                    index=0;
+                }
             }
-        }
-        else{
+            else{
                 if(index===0){
                     index=totalSlides-1;
                 }
@@ -175,10 +175,10 @@ export default class HomeManager {
                 }
             }
 
-        for(let i=0;i<slides.length;i++){
-                slides[i].classList.remove("active");
-        }
-        slides[index].classList.add("active");
+            for(let i=0;i<slides.length;i++){
+                slides[i].classList.remove('active');
+            }
+            slides[index].classList.add('active');
 
         }
 
@@ -195,7 +195,7 @@ export default class HomeManager {
                         <p class="lead text-muted mb-0">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte...</p>
                     </div>
                 </section>
-        `
+        `;
     }
 
     actionSlideTemplate(action){

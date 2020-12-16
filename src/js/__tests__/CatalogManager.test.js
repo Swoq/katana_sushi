@@ -1,15 +1,15 @@
-import {get_data} from "../async-util";
+import {get_data} from '../async-util';
 
 jest.mock('../async-util');
 
-import CatalogManager from "../CatalogManager";
+import CatalogManager from '../CatalogManager';
 
-describe("CatalogManager class", ()=> {
+describe('CatalogManager class', ()=> {
     let _;
     let contentEl;
     beforeAll(()=>{
-        document.body.innerHTML = `<div id="page-content"></div>`
-        contentEl = document.getElementById("page-content");
+        document.body.innerHTML = '<div id="page-content"></div>';
+        contentEl = document.getElementById('page-content');
         _ = new CatalogManager(contentEl);
     });
 
@@ -17,8 +17,8 @@ describe("CatalogManager class", ()=> {
         _ = new CatalogManager(contentEl);
     });
 
-    describe("CatalogManager: showLoading", ()=>{
-        it("should show loading", ()=>{
+    describe('CatalogManager: showLoading', ()=>{
+        it('should show loading', ()=>{
             let result =  `
         <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
@@ -30,8 +30,8 @@ describe("CatalogManager class", ()=> {
         });
     });
 
-    describe("CatalogManager: youMayLikeTemplate", ()=>{
-        it("should return you may like section", ()=>{
+    describe('CatalogManager: youMayLikeTemplate', ()=>{
+        it('should return you may like section', ()=>{
             let result = `
         <div class="container">
         <div class="row">
@@ -327,8 +327,8 @@ describe("CatalogManager class", ()=> {
         });
     });
 
-    describe("CatalogManager: sectionTemplate", ()=>{
-        it("should return section template", ()=>{
+    describe('CatalogManager: sectionTemplate', ()=>{
+        it('should return section template', ()=>{
             let result = `
         <section class="jumbotron text-center">
                 <div class="container">
@@ -337,18 +337,18 @@ describe("CatalogManager class", ()=> {
                 </div>
         </section>
         ${_.youMayLikeTemplate()}
-        `
+        `;
             expect(_.sectionTemplate()).toEqual(result);
         });
     });
 
-    describe("CatalogManager: categoryTemplate", ()=>{
-        it("should return category template", ()=>{
+    describe('CatalogManager: categoryTemplate', ()=>{
+        it('should return category template', ()=>{
             let category = {
-                "categoryId": 0,
-                "url": "vegeterian",
-                "name": "Вегетарианские",
-                "description": "More details ... "
+                'categoryId': 0,
+                'url': 'vegeterian',
+                'name': 'Вегетарианские',
+                'description': 'More details ... '
             };
             let result = `
             <li class="list-group-item list-group-item-action list-group-item-secondary"><a href="#catalog/${category.url}">${category.name}</a></li>
@@ -357,14 +357,14 @@ describe("CatalogManager class", ()=> {
         });
     });
 
-    describe("CatalogManager: productTemplate", ()=>{
-        it("should return product template", ()=>{
+    describe('CatalogManager: productTemplate', ()=>{
+        it('should return product template', ()=>{
             let product = {
-                "url": "pizza_mozzarella1",
-                "productName": "Pizza Mozzarella1",
-                "productDescription": "About Pizza ... ",
-                "price": 155.05,
-                "images": ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg", "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]
+                'url': 'pizza_mozzarella1',
+                'productName': 'Pizza Mozzarella1',
+                'productDescription': 'About Pizza ... ',
+                'price': 155.05,
+                'images': ['https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg', 'https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg']
             };
             let result = `
             <div class="col-12 col-md-6 col-lg-4">
@@ -384,26 +384,26 @@ describe("CatalogManager class", ()=> {
                 </div>
             </div>
         </div>
-        `
+        `;
             expect(_.productTemplate(product)).toEqual(result);
         });
     });
 
-    describe("CatalogManager: getHash", ()=>{
-        it("should return hash", ()=>{
+    describe('CatalogManager: getHash', ()=>{
+        it('should return hash', ()=>{
 
             expect(_.getHash()).toEqual('catalog');
         });
     });
 
-    describe("CatalogManager: getRecomendation", ()=>{
-        it("should return recomendation", ()=>{
+    describe('CatalogManager: getRecomendation', ()=>{
+        it('should return recomendation', ()=>{
             let product = {
-                "url": "pizza_mozzarella1",
-                "productName": "Pizza Mozzarella1",
-                "productDescription": "About Pizza ... ",
-                "price": 155.05,
-                "images": ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg", "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]
+                'url': 'pizza_mozzarella1',
+                'productName': 'Pizza Mozzarella1',
+                'productDescription': 'About Pizza ... ',
+                'price': 155.05,
+                'images': ['https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg', 'https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg']
             };
             let result = `
         <div class="card bg-light mb-3">
@@ -415,13 +415,13 @@ describe("CatalogManager class", ()=> {
                                 <p class="bloc_left_price">${product.price} $</p>
                             </div>
                         </div>
-        `
+        `;
             expect(_.getRecomendation(product)).toEqual(result);
         });
     });
 
-    describe("CatalogManager: loadFullCatalog", ()=>{
-        it("should load full catalog", ()=>{
+    describe('CatalogManager: loadFullCatalog', ()=>{
+        it('should load full catalog', ()=>{
             let promise = new Promise((resolve => {
                 _.loadFullCatalog();
                 resolve();
@@ -451,7 +451,7 @@ describe("CatalogManager class", ()=> {
             </div>
             `;
                     expect(contentEl.innerHTML).toEqual(result);
-                })
+                });
 
             });
 
@@ -466,7 +466,7 @@ describe("CatalogManager class", ()=> {
                                 <p class="bloc_left_price">${product.price} $</p>
                             </div>
                         </div>
-        `
+        `;
             }
 
         });
@@ -474,20 +474,20 @@ describe("CatalogManager class", ()=> {
 
     });
 
-    describe("CatalogManager: loadByCategory", ()=>{
-        it("should load by category", ()=>{
+    describe('CatalogManager: loadByCategory', ()=>{
+        it('should load by category', ()=>{
             let category = 'vegeterian';
             let function_result;
             let promise = new Promise((resolve => {
                 function_result = _.loadByCategory(category);
                 resolve(function_result);
             }));
-            promise.then((data)=>{
+            promise.then(()=>{
                 get_data().then(data => {
-                    let product_by_category = [{url: "pizza_mozzarella1", productName: "Pizza Mozzarella1", productDescription: "About Pizza ... ", price: 155.05, images: ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg",
-                            "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]},
-                        {url: "pizza_four_cheese1", productName: "Pizza 1", productDescription: "About Pizza ... ", price: 155.05, images: ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg",
-                                "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]}
+                    let product_by_category = [{url: 'pizza_mozzarella1', productName: 'Pizza Mozzarella1', productDescription: 'About Pizza ... ', price: 155.05, images: ['https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg',
+                        'https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg']},
+                    {url: 'pizza_four_cheese1', productName: 'Pizza 1', productDescription: 'About Pizza ... ', price: 155.05, images: ['https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg',
+                        'https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg']}
                     ];
                     let result = `
             ${_.sectionTemplate()}
@@ -514,7 +514,7 @@ describe("CatalogManager class", ()=> {
             `;
                     expect(contentEl.innerHTML).toEqual(result);
                     expect(data).toBeTruthy();
-                })
+                });
 
             });
 
@@ -529,27 +529,27 @@ describe("CatalogManager class", ()=> {
                                 <p class="bloc_left_price">${product.price} $</p>
                             </div>
                         </div>
-        `
+        `;
             }
 
         });
     });
 
-    describe("CatalogManager: onLoad", ()=>{
+    describe('CatalogManager: onLoad', ()=>{
 
-        it("should call loadFullCatalog if null", ()=>{
+        it('should call loadFullCatalog if null', ()=>{
             const loadFullCatalog = CatalogManager.prototype.loadFullCatalog = jest.fn();
             _.onLoad(null);
             expect(loadFullCatalog).toHaveBeenCalledTimes(1);
         });
 
-        it("should call loadByCategory if not null", ()=>{
+        it('should call loadByCategory if not null', ()=>{
             const loadByCategory = CatalogManager.prototype.loadByCategory = jest.fn();
             _.onLoad('test');
             expect(loadByCategory).toHaveBeenCalledTimes(1);
         });
 
-        it("should return true", ()=>{
+        it('should return true', ()=>{
             expect(_.onLoad()).toBeTruthy();
         });
 

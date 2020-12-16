@@ -23,7 +23,7 @@ export default class MainManager {
     }
 
     loadCart(){
-        let manager = this.getManagerByHash("cart");
+        let manager = this.getManagerByHash('cart');
         manager.loadCartFromLocalStorage();
     }
 }

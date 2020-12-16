@@ -1,17 +1,17 @@
 jest.mock('../async-util');
 
-import OrderManager from "../OrderManager";
+import OrderManager from '../OrderManager';
 
 describe('OrderManager class', ()=>{
     let _;
     let contentEl;
     beforeAll(()=>{
-        document.body.innerHTML = `<div id="page-content"></div>`
-        contentEl = document.getElementById("page-content");
+        document.body.innerHTML = '<div id="page-content"></div>';
+        contentEl = document.getElementById('page-content');
         _ = new OrderManager(contentEl);
     });
-    describe("CatalogManager: showLoading", ()=>{
-        it("should show loading", ()=>{
+    describe('CatalogManager: showLoading', ()=>{
+        it('should show loading', ()=>{
             let result =  `
         <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
@@ -24,19 +24,19 @@ describe('OrderManager class', ()=>{
     });
 
     describe('OrderManager: getHash', ()=>{
-       it("should return hash", ()=>{
-           expect(_.getHash()).toEqual('order');
-       });
-   });
+        it('should return hash', ()=>{
+            expect(_.getHash()).toEqual('order');
+        });
+    });
 
     describe('OrderManager: showError', ()=>{
-        it("should return error block", ()=>{
+        it('should return error block', ()=>{
             let result = `
         <div class="alert alert-danger" role="alert">
         Some problems with the data server. Back to <a href="/#" class="alert-link">main page</a>. Give it a click if you like.
         </div>
         `;
-            let t_elm = document.createElement("DIV");
+            let t_elm = document.createElement('DIV');
             t_elm.innerHTML = result;
             _.showError();
             expect(t_elm.innerHTML).toEqual(contentEl.innerHTML);
@@ -44,15 +44,15 @@ describe('OrderManager class', ()=>{
     });
 
     describe('OrderManager: loadOrderById', ()=>{
-        it("should return order block", ()=>{
+        it('should return order block', ()=>{
             let id = 1;
             let order_data = {
-                address: "Kiev",
-                date: "2020-12-16",
-                firstName: "f",
-                lastName: "f",
-                phone: "044-322-12-12",
-                time: "18:37"
+                address: 'Kiev',
+                date: '2020-12-16',
+                firstName: 'f',
+                lastName: 'f',
+                phone: '044-322-12-12',
+                time: '18:37'
             };
             let result = `
         <div class="container">
@@ -83,9 +83,9 @@ describe('OrderManager class', ()=>{
     </article>
 </div>
 
-        `
+        `;
 
-            let el = document.createElement("DIV");
+            let el = document.createElement('DIV');
             el.innerHTML = result;
 
             _.loadOrderById(id, order_data);
@@ -94,17 +94,17 @@ describe('OrderManager class', ()=>{
     });
 
     describe('OrderManager: attachEventLister', ()=>{
-        it("should return order block", ()=>{
+        it('should return order block', ()=>{
             const showLoading = jest.fn();
             OrderManager.prototype.showLoading = function (){
                 return showLoading();
-            }
+            };
             expect(_.attachEventLister).toBeDefined();
         });
     });
 
     describe('OrderManager: loadCheckout', ()=>{
-        it("should load checkout form", ()=>{
+        it('should load checkout form', ()=>{
             let result = `
 <div class="container">
     <div class="py-5 text-center">
@@ -235,7 +235,7 @@ describe('OrderManager class', ()=>{
       </div>
     </div>
         `;
-            let t_elm = document.createElement("DIV");
+            let t_elm = document.createElement('DIV');
             t_elm.innerHTML = result;
 
             const attachEventLister = OrderManager.prototype.attachEventLister = jest.fn();
@@ -249,20 +249,20 @@ describe('OrderManager class', ()=>{
         });
     });
 
-    describe("OrderManager: onLoad", ()=>{
+    describe('OrderManager: onLoad', ()=>{
 
-        it("should call loadCheckout if null", ()=>{
+        it('should call loadCheckout if null', ()=>{
             const loadCheckout = OrderManager.prototype.loadCheckout = jest.fn();
             _.onLoad(null);
             expect(loadCheckout).toHaveBeenCalledTimes(1);
         });
 
-        it("should return false if not null", ()=>{
+        it('should return false if not null', ()=>{
 
             expect(_.onLoad('test')).toBeFalsy();
         });
 
-        it("should return true if null", ()=>{
+        it('should return true if null', ()=>{
             expect(_.onLoad(null)).toBeTruthy();
         });
 

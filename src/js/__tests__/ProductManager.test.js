@@ -1,13 +1,13 @@
 jest.mock('../async-util');
 
-import ProductManager from "../ProductManager";
+import ProductManager from '../ProductManager';
 
-describe("ProductManager class", ()=> {
+describe('ProductManager class', ()=> {
     let _;
     let contentEl;
     beforeAll(()=>{
-        document.body.innerHTML = `<div id="page-content"></div>`
-        contentEl = document.getElementById("page-content");
+        document.body.innerHTML = '<div id="page-content"></div>';
+        contentEl = document.getElementById('page-content');
         _ = new ProductManager(contentEl);
     });
 
@@ -15,8 +15,8 @@ describe("ProductManager class", ()=> {
         _ = new ProductManager(contentEl);
     });
 
-    describe("ProductManager: showLoading", ()=>{
-        it("should show loading", ()=>{
+    describe('ProductManager: showLoading', ()=>{
+        it('should show loading', ()=>{
             let result =  `
         <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
@@ -28,30 +28,30 @@ describe("ProductManager class", ()=> {
         });
     });
 
-    describe("ProductManager: getHash", ()=>{
-        it("should return hash", ()=>{
+    describe('ProductManager: getHash', ()=>{
+        it('should return hash', ()=>{
 
             expect(_.getHash()).toEqual('product');
         });
     });
 
-    describe("ProductManager: loadProduct", ()=>{
+    describe('ProductManager: loadProduct', ()=>{
         let showLoading;
 
-        it("should invoke showLoading", ()=>{
+        it('should invoke showLoading', ()=>{
             showLoading = jest.fn();
             ProductManager.prototype.showLoading = function (){
                 return showLoading();
             };
         });
 
-        it("should load product", ()=>{
+        it('should load product', ()=>{
             let product2Show = {
-                "url": "pizza_mozzarella1",
-                "productName": "Pizza Mozzarella1",
-                "productDescription": "About Pizza ... ",
-                "price": 155.05,
-                "images": ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg", "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]
+                'url': 'pizza_mozzarella1',
+                'productName': 'Pizza Mozzarella1',
+                'productDescription': 'About Pizza ... ',
+                'price': 155.05,
+                'images': ['https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg', 'https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg']
             };
 
             let result = `
@@ -65,8 +65,8 @@ describe("ProductManager class", ()=> {
                             </div> <!-- slider-product.// -->
                             <div class="img-small-wrap">
                                 ${product2Show.images.map(img => {
-                return `<div class="item-gallery"><img src="${img}"></div>`
-            })}
+        return `<div class="item-gallery"><img src="${img}"></div>`;
+    })}
                             </div> <!-- slider-nav.// -->
                         </article> <!-- gallery-wrap .end// -->
                     </aside>
@@ -144,7 +144,7 @@ describe("ProductManager class", ()=> {
             </div> <!-- card.// -->
             `;
 
-            let el = document.createElement("DIV");
+            let el = document.createElement('DIV');
             el.innerHTML = result;
 
             let promise = new Promise(resolve => {
@@ -161,23 +161,23 @@ describe("ProductManager class", ()=> {
         });
     });
 
-    describe("ProductManager: onLoad", ()=>{
-        it("should return false if null", ()=>{
+    describe('ProductManager: onLoad', ()=>{
+        it('should return false if null', ()=>{
             expect(_.onLoad(null)).toBeFalsy();
         });
 
-        it("should invoke loadProduct if not null", ()=>{
+        it('should invoke loadProduct if not null', ()=>{
             const loadProduct = jest.fn();
             ProductManager.prototype.loadProduct = function (){
                 return loadProduct();
             };
 
-            _.onLoad("test")
+            _.onLoad('test');
             expect(loadProduct).toHaveBeenCalledTimes(1);
         });
 
-        it("should return true if not null", ()=>{
-            expect(_.onLoad("test")).toBeTruthy();
+        it('should return true if not null', ()=>{
+            expect(_.onLoad('test')).toBeTruthy();
         });
     });
 

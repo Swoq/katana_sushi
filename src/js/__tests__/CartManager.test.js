@@ -1,18 +1,18 @@
 jest.mock('../async-util');
 
-import CartManager from "../CartManager";
+import CartManager from '../CartManager';
 
-describe("CartManager class", ()=> {
+describe('CartManager class', ()=> {
     let _;
     beforeAll(()=>{
         _ = new CartManager();
     });
 
     afterEach(()=>{
-       _ = new CartManager();
+        _ = new CartManager();
     });
 
-    it("should have default values after init", ()=>{
+    it('should have default values after init', ()=>{
         expect(_.amountOfProducts).toBe(0);
         expect(_.total).toBe(0);
         expect(_.status).toBe(false);
@@ -31,7 +31,7 @@ describe("CartManager class", ()=> {
 
         it('should add attribute and change status', ()=>{
 
-            _.turnOffButtons()
+            _.turnOffButtons();
             expect(_.status).toBeFalsy();
             expect(_.checkout_btn.disabled).toBeTruthy();
         });
@@ -46,28 +46,28 @@ describe("CartManager class", ()=> {
             _.checkout_btn.setAttribute('disabled', '');
             _.clear_cart_btn.setAttribute('disabled', '');
 
-            _.turnOnButtons()
+            _.turnOnButtons();
             expect(_.status).toBeTruthy();
             expect(_.checkout_btn.disabled).toBeFalsy();
         });
 
     });
 
-    describe("CartManager: getCartProductTemplate", ()=>{
+    describe('CartManager: getCartProductTemplate', ()=>{
         let product;
         let amount;
         beforeAll(()=>{
             product = {
-                "url": "pizza_mozzarella1",
-                "productName": "Pizza Mozzarella1",
-                "productDescription": "About Pizza ... ",
-                "price": 155.05,
-                "images": ["https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg", "https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg"]
+                'url': 'pizza_mozzarella1',
+                'productName': 'Pizza Mozzarella1',
+                'productDescription': 'About Pizza ... ',
+                'price': 155.05,
+                'images': ['https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg', 'https://images.pizza33.ua/products/menu/CgXF6CgaQBXWj4iercaMJ5zCfvT1ITGC.jpg']
             };
             amount = 1;
         });
 
-        it("should return template from product", ()=>{
+        it('should return template from product', ()=>{
             let result = `
             <div class="row cart-detail">
                 <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
@@ -84,30 +84,30 @@ describe("CartManager class", ()=> {
         });
     });
 
-    describe("CartManager: addNewProductsByHashes", ()=>{
-        it("should add products by hash", ()=>{
+    describe('CartManager: addNewProductsByHashes', ()=>{
+        it('should add products by hash', ()=>{
             let productNumberLabelEl1 = document.createElement('DIV');
-            productNumberLabelEl1.setAttribute('id', 'productNumberLabel1')
+            productNumberLabelEl1.setAttribute('id', 'productNumberLabel1');
             let productNumberLabelEl2 = document.createElement('DIV');
-            productNumberLabelEl2.setAttribute('id', 'productNumberLabel2')
+            productNumberLabelEl2.setAttribute('id', 'productNumberLabel2');
             let totalEl = document.createElement('DIV');
-            totalEl.setAttribute('id', 'total')
+            totalEl.setAttribute('id', 'total');
             let cartSection = document.createElement('DIV');
-            cartSection.setAttribute('id', 'cart-dropdown')
+            cartSection.setAttribute('id', 'cart-dropdown');
 
             document.body.append(productNumberLabelEl1, productNumberLabelEl2, totalEl, cartSection);
             let getAmountFromLocalStorage = jest.fn(function (){
                 return 1;
             });
 
-            CartManager.prototype.getAmountFromLocalStorage = function (url){
+            CartManager.prototype.getAmountFromLocalStorage = function (){
                 return getAmountFromLocalStorage();
-            }
+            };
 
             const turnOnButtons = CartManager.prototype.turnOnButtons = jest.fn();
 
-            let local_storage_items = [{url: "pizza_mozzarella1", amount: 1}];
-            let promise = new Promise((resolve, reject) => {
+            let local_storage_items = [{url: 'pizza_mozzarella1', amount: 1}];
+            let promise = new Promise((resolve) => {
                 _.addNewProductsByHashes(local_storage_items);
                 resolve();
             });
@@ -121,27 +121,27 @@ describe("CartManager class", ()=> {
         });
     });
 
-    describe("CartManager: getHash", ()=>{
-        it("should be defined", ()=>{
-            expect(_.getHash()).toBeDefined()
+    describe('CartManager: getHash', ()=>{
+        it('should be defined', ()=>{
+            expect(_.getHash()).toBeDefined();
         });
 
-        it("should return hash", ()=>{
-            expect(_.getHash()).toBe("cart");
+        it('should return hash', ()=>{
+            expect(_.getHash()).toBe('cart');
         });
     });
 
-    describe("CartManager: onLoad", ()=>{
+    describe('CartManager: onLoad', ()=>{
 
-        it("should be defined", ()=>{
-            expect(_.onLoad(null)).toBeDefined()
+        it('should be defined', ()=>{
+            expect(_.onLoad(null)).toBeDefined();
         });
 
-        it("should return false if null", ()=>{
+        it('should return false if null', ()=>{
             expect(_.onLoad(null)).toBe(false);
         });
 
-        it("should call clearCart() if clear", ()=>{
+        it('should call clearCart() if clear', ()=>{
             const clearCart = CartManager.prototype.clearCart = jest.fn();
 
             _.onLoad('clear');
@@ -160,13 +160,13 @@ describe("CartManager class", ()=> {
                 addProductToLocalStorage.mockReturnValueOnce(true).mockReturnValueOnce(false);
             });
 
-            it("should call addNewProductsByHashes() if true", ()=>{
+            it('should call addNewProductsByHashes() if true', ()=>{
                 const addNewProductsByHashes = CartManager.prototype.addNewProductsByHashes = jest.fn();
                 _.onLoad('test');
                 expect(addNewProductsByHashes).toHaveBeenCalledTimes(1);
             });
 
-            it("should call addExistProduct() if false", ()=> {
+            it('should call addExistProduct() if false', ()=> {
                 const addExistProduct = CartManager.prototype.addExistProduct = jest.fn();
                 _.onLoad('test');
                 expect(addExistProduct).toHaveBeenCalledTimes(1);

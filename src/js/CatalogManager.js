@@ -1,9 +1,9 @@
-import {get_data} from "./async-util";
+import {get_data} from './async-util';
 
 export default class CatalogManager {
     constructor(containerEl){
         this.containerEl = containerEl;
-        this.hash = "catalog"
+        this.hash = 'catalog';
     }
 
     onLoad(subHash) {
@@ -31,7 +31,7 @@ export default class CatalogManager {
             }
 
             let i = 0;
-            let product_by_category = data.products.filter(function(obj) {
+            let product_by_category = data.products.filter(function() {
                 if (i < data.productsDetail.length){
                     return (categoryId === data.productsDetail[i++].categoryId);
                 }
@@ -63,7 +63,7 @@ export default class CatalogManager {
 
             `;
             return category_found;
-        })
+        });
     }
 
     loadFullCatalog(){
@@ -89,7 +89,7 @@ export default class CatalogManager {
                     </div>
                 </div>
             </div>
-            `
+            `;
         });
     }
 
@@ -104,7 +104,7 @@ export default class CatalogManager {
                                 <p class="bloc_left_price">${product.price} $</p>
                             </div>
                         </div>
-        `
+        `;
     }
 
     getHash(){
@@ -131,13 +131,13 @@ export default class CatalogManager {
                 </div>
             </div>
         </div>
-        `
+        `;
     }
 
     categoryTemplate(category){
         return `
             <li class="list-group-item list-group-item-action list-group-item-secondary"><a href="#catalog/${category.url}">${category.name}</a></li>
-        `
+        `;
     }
 
     sectionTemplate(){
@@ -149,7 +149,7 @@ export default class CatalogManager {
                 </div>
         </section>
         ${this.youMayLikeTemplate()}
-        `
+        `;
     }
 
     youMayLikeTemplate(){
@@ -443,7 +443,7 @@ export default class CatalogManager {
             </div>
         </div>
     </div>
-        `
+        `;
     }
 
     showLoading(){

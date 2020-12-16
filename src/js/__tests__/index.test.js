@@ -1,29 +1,29 @@
 jest.mock('../async-util');
 
-import CatalogManager from "../CatalogManager";
-import HomeManager from "../HomeManager";
-import MainManager from "../MainManager";
-import OrderManager from "../OrderManager";
-import ProductManager from "../ProductManager";
-import RoutManager from "../RoutManager";
+import CatalogManager from '../CatalogManager';
+import HomeManager from '../HomeManager';
+import MainManager from '../MainManager';
+import OrderManager from '../OrderManager';
+import ProductManager from '../ProductManager';
+import RoutManager from '../RoutManager';
 
-describe("classes should be defined", ()=>{
-    it("CatalogManager", ()=>{
+describe('classes should be defined', ()=>{
+    it('CatalogManager', ()=>{
         expect(CatalogManager).toBeDefined();
     });
-    it("HomeManager", ()=>{
+    it('HomeManager', ()=>{
         expect(HomeManager).toBeDefined();
     });
-    it("ProductManager", ()=>{
+    it('ProductManager', ()=>{
         expect(ProductManager).toBeDefined();
     });
-    it("OrderManager", ()=>{
+    it('OrderManager', ()=>{
         expect(OrderManager).toBeDefined();
     });
-    it("RoutManager", ()=>{
+    it('RoutManager', ()=>{
         expect(RoutManager).toBeDefined();
     });
-    it("MainManager", ()=>{
+    it('MainManager', ()=>{
         expect(MainManager).toBeDefined();
     });
 });

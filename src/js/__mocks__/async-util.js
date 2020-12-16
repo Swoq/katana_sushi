@@ -87,8 +87,7 @@ let data = `
   "orders": []
 }
 
-`
-let response = {data : data};
+`;
 
 let parse_data = {id: 1};
 

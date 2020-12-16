@@ -1,7 +1,7 @@
-import {get_data} from "./async-util";
+import {get_data} from './async-util';
 
 export default function init_end_points(){
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         get_data().then(data => {
             let products_end_poins = [];
             let actions_end_poins = [];
@@ -9,24 +9,24 @@ export default function init_end_points(){
             let orders_end_poins = [];
 
             data.products.forEach(element => {
-                products_end_poins.push(element.url)
+                products_end_poins.push(element.url);
             });
 
-            products_end_poins.push("clear");
+            products_end_poins.push('clear');
 
             data.productsCategories.forEach(element => {
-                categories_end_poins.push(element.url)
+                categories_end_poins.push(element.url);
             });
 
             data.actions.forEach(element =>{
-                actions_end_poins.push(element.url)
+                actions_end_poins.push(element.url);
             });
 
             data.orders.forEach(element =>{
-                orders_end_poins.push(element)
+                orders_end_poins.push(element);
             });
             resolve({products_end_poins, actions_end_poins, categories_end_poins, orders_end_poins});
-        })
-    })
+        });
+    });
 }
 

@@ -5,7 +5,7 @@ export function sendRequest(method, url, body=null) {
         if (!response.ok) {
             throw Error(response.statusText);
         }
-        return response.json()
+        return response.json();
     })
         .catch(error => {
             console.log(error);
@@ -13,7 +13,7 @@ export function sendRequest(method, url, body=null) {
 }
 
 export function get_data(){
-    return new Promise ((resolve, reject) => {
+    return new Promise ((resolve) => {
         sendRequest('GET', requestURL)
             .then(data => {
                 resolve(data);
@@ -21,5 +21,5 @@ export function get_data(){
             .catch(error => {
                 console.log(error);
             });
-    })
+    });
 }

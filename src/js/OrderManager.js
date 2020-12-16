@@ -1,11 +1,11 @@
-import {sendRequest} from "./async-util";
+import {sendRequest} from './async-util';
 
 const postRequestUrl = 'https://my-json-server.typicode.com/Swoq/katana_sushi/orders';
 
 export default class OrderManager {
     constructor(containerEl){
         this.containerEl = containerEl;
-        this.hash = "order";
+        this.hash = 'order';
         
     }
 
@@ -165,18 +165,18 @@ export default class OrderManager {
       </div>
     </div>
         `;
-    this.attachEventLister();
-    this.dateDefaultValidation();
+        this.attachEventLister();
+        this.dateDefaultValidation();
     }
 
     dateDefaultValidation(){
-        let myDate = document.getElementById("date");
+        let myDate = document.getElementById('date');
         let today = new Date();
         myDate.value = today.toISOString().substr(0, 10);
         myDate.min = today.toISOString().substr(0, 10);
 
-        let myTime = document.getElementById("time");
-        myTime.min = (today.getHours()+":"+today.getMinutes());
+        let myTime = document.getElementById('time');
+        myTime.min = (today.getHours()+':'+today.getMinutes());
     }
 
     formValidation(){
@@ -185,17 +185,17 @@ export default class OrderManager {
         Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {
-                    event.preventDefault()
-                    event.stopPropagation()
+                    event.preventDefault();
+                    event.stopPropagation();
                 }
 
-                form.classList.add('was-validated')
-            }, false)
+                form.classList.add('was-validated');
+            }, false);
         });
     }
 
     attachEventLister(){
-        const btnEl = document.getElementById("checkout-submit");
+        const btnEl = document.getElementById('checkout-submit');
         let self = this;
 
         this.formValidation();
@@ -205,18 +205,18 @@ export default class OrderManager {
             let formsToCheck = document.getElementsByClassName('needs-validation');
             Array.prototype.filter.call(formsToCheck, function(form){
                 if(form.checkValidity() === false){
-                    console.log("prevent default")
+                    console.log('prevent default');
                     validation = false;
                 }
             });
             
             if(validation){
-                let firstName = document.getElementById("firstName").value;
-                let lastName = document.getElementById("lastName").value;
-                let address = document.getElementById("address").value;
-                let phone = document.getElementById("phone").value;
-                let date = document.getElementById("date").value;
-                let time = document.getElementById("time").value;
+                let firstName = document.getElementById('firstName').value;
+                let lastName = document.getElementById('lastName').value;
+                let address = document.getElementById('address').value;
+                let phone = document.getElementById('phone').value;
+                let date = document.getElementById('date').value;
+                let time = document.getElementById('time').value;
                 // ...
 
                 self.containerEl.innerHTML = self.showLoading();
@@ -231,11 +231,11 @@ export default class OrderManager {
                 };
 
                 sendRequest('POST', postRequestUrl, JSON.stringify(order_data))
-                .then( data => {
-                    history.pushState(null, null, ('/#order/'+data.id))
-                    self.loadOrderById(data.id, order_data);
+                    .then( data => {
+                        history.pushState(null, null, ('/#order/'+data.id));
+                        self.loadOrderById(data.id, order_data);
                     
-                });
+                    });
             }
 
             
@@ -272,7 +272,7 @@ export default class OrderManager {
     </article>
 </div>
 
-        `
+        `;
     }
 
     showError(){
@@ -280,6 +280,6 @@ export default class OrderManager {
         <div class="alert alert-danger" role="alert">
         Some problems with the data server. Back to <a href="/#" class="alert-link">main page</a>. Give it a click if you like.
         </div>
-        `
+        `;
     }
 }

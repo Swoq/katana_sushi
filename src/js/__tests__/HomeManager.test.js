@@ -1,15 +1,15 @@
-import {get_data} from "../async-util";
+import {get_data} from '../async-util';
 
 jest.mock('../async-util');
 
-import HomeManager from "../HomeManager";
+import HomeManager from '../HomeManager';
 
-describe("HomeManager class", ()=> {
+describe('HomeManager class', ()=> {
     let _;
     let contentEl;
     beforeAll(()=>{
-        document.body.innerHTML = `<div id="page-content"></div>`
-        contentEl = document.getElementById("page-content");
+        document.body.innerHTML = '<div id="page-content"></div>';
+        contentEl = document.getElementById('page-content');
         _ = new HomeManager(contentEl);
     });
 
@@ -17,8 +17,8 @@ describe("HomeManager class", ()=> {
         _ = new HomeManager(contentEl);
     });
 
-    describe("HomeManager: showLoading", ()=>{
-        it("should show loading", ()=>{
+    describe('HomeManager: showLoading', ()=>{
+        it('should show loading', ()=>{
             let result =  `
         <div class="text-center" style="background-color: white; opacity: 0.5; height: 500px;">
         <div class="spinner-border" style="position: absolute; top: 40%; left: 50%;" role="status">
@@ -30,21 +30,21 @@ describe("HomeManager class", ()=> {
         });
     });
 
-    describe("CatalogManager: getHash", ()=>{
-        it("should return hash", ()=>{
+    describe('CatalogManager: getHash', ()=>{
+        it('should return hash', ()=>{
 
             expect(_.getHash()).toEqual('action');
         });
     });
 
-    describe("CatalogManager: actionSlideTemplate", ()=>{
-        it("should return action template", ()=>{
+    describe('CatalogManager: actionSlideTemplate', ()=>{
+        it('should return action template', ()=>{
             let action = {
-                "url": "promotion_first",
-                "name": "Promotion 1",
-                "description": "Promotion details lorem ipsum.. ",
-                "datePosted": "21.02.2020",
-                "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+1"
+                'url': 'promotion_first',
+                'name': 'Promotion 1',
+                'description': 'Promotion details lorem ipsum.. ',
+                'datePosted': '21.02.2020',
+                'img': 'https://dummyimage.com/1000x300/000/fff.png&text=Promotion+1'
             };
             let result = `
             <div class="custom-item">
@@ -58,8 +58,8 @@ describe("HomeManager class", ()=> {
         });
     });
 
-    describe("HomeManager: mainTitleTemplate", ()=>{
-        it("should return main title template", ()=>{
+    describe('HomeManager: mainTitleTemplate', ()=>{
+        it('should return main title template', ()=>{
             let result = `
             <section class="jumbotron text-center">
                     <div class="container">
@@ -67,13 +67,13 @@ describe("HomeManager class", ()=> {
                         <p class="lead text-muted mb-0">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte...</p>
                     </div>
                 </section>
-        `
+        `;
             expect(_.mainTitleTemplate()).toEqual(result);
         });
     });
 
-    describe("HomeManager: getTitlesBlocks", ()=>{
-        it("should return blocks", ()=>{
+    describe('HomeManager: getTitlesBlocks', ()=>{
+        it('should return blocks', ()=>{
             let result = `
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
@@ -124,20 +124,20 @@ describe("HomeManager class", ()=> {
         });
     });
 
-    describe("HomeManager: loadAction", ()=>{
-        it("should load action", ()=>{
+    describe('HomeManager: loadAction', ()=>{
+        it('should load action', ()=>{
             const showLoading = jest.fn(()=>{
-                return ` `;
+                return ' ';
             });
             HomeManager.prototype.showLoading = function (){
                 return showLoading();
-            }
+            };
             let action2Show = {
-                "url": "promotion_first",
-                "name": "Promotion 1",
-                "description": "Promotion details lorem ipsum.. ",
-                "datePosted": "21.02.2020",
-                "img": "https://dummyimage.com/1000x300/000/fff.png&text=Promotion+1"
+                'url': 'promotion_first',
+                'name': 'Promotion 1',
+                'description': 'Promotion details lorem ipsum.. ',
+                'datePosted': '21.02.2020',
+                'img': 'https://dummyimage.com/1000x300/000/fff.png&text=Promotion+1'
             };
             let result = `
             <div class="container">
@@ -162,12 +162,17 @@ describe("HomeManager class", ()=> {
                 </div>
               </div>
             </div>
-            `
+            `;
+
+            let el = document.createElement('DIV');
+            el.innerHTML = result;
+
             let promise = new Promise(resolve => {
-               _.loadAction(action2Show.url);
+                _.loadAction(action2Show.url);
+                resolve();
             });
             promise.then(()=>{
-                expect(contentEl.innerHTML).toEqual(result);
+                expect(el.innerHTML).toEqual(contentEl.innerHTML);
                 expect(showLoading).toHaveBeenCalledTimes(1);
             });
 
@@ -175,23 +180,23 @@ describe("HomeManager class", ()=> {
 
     });
 
-    describe("HomeManager: onLoad", ()=>{
-        it("should return false if null", ()=>{
+    describe('HomeManager: onLoad', ()=>{
+        it('should return false if null', ()=>{
             expect(_.onLoad(null)).toBeFalsy();
         });
 
-        it("should invoke loadAction if not null", ()=>{
+        it('should invoke loadAction if not null', ()=>{
             const loadAction = HomeManager.prototype.loadAction = jest.fn();
-            _.onLoad("test");
+            _.onLoad('test');
             expect(loadAction).toHaveBeenCalledTimes(1);
         });
 
-        it("should return true if not null", ()=>{
-            expect(_.onLoad("test")).toBeTruthy();
+        it('should return true if not null', ()=>{
+            expect(_.onLoad('test')).toBeTruthy();
         });
     });
 
-    describe("HomeManager: attachSliderLogic", ()=>{
+    describe('HomeManager: attachSliderLogic', ()=>{
         beforeAll(()=>{
             document.body.innerHTML =
                 `<div class="custom-slider-items">
@@ -202,15 +207,15 @@ describe("HomeManager class", ()=> {
                 <div class="left-slide"></div>`;
         });
 
-        it("should be defined", ()=>{
+        it('should be defined', ()=>{
             _.attachSliderLogic();
             expect(_.attachSliderLogic).toBeDefined();
         });
 
     });
 
-    describe("HomeManager: loadMainPage", ()=>{
-        it("should load main page", ()=>{
+    describe('HomeManager: loadMainPage', ()=>{
+        it('should load main page', ()=>{
             get_data().then(data => {
                 let result = `
 
@@ -235,14 +240,14 @@ describe("HomeManager class", ()=> {
                 ${_.getTitlesBlocks()}
             </div>
             `;
-                let t_element = document.createElement("DIV");
+                let t_element = document.createElement('DIV');
                 t_element.innerHTML = result;
                 const attachSliderLogic = HomeManager.prototype.attachSliderLogic = jest.fn();
 
                 let promise = new Promise(resolve => {
                     _ = new HomeManager(contentEl);
                     _.loadMainPage();
-                    resolve()
+                    resolve();
                 });
                 promise.then(()=>{
                     expect(attachSliderLogic).toHaveBeenCalledTimes(1);

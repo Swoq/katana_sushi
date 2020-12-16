@@ -1,15 +1,15 @@
-import {get_data} from "./async-util";
+import {get_data} from './async-util';
 
 export default class CartManager {
     constructor(){
-        this.hash = "cart"
+        this.hash = 'cart';
         this.amountOfProducts = 0;
         this.total = 0;
         this.status = false;
 
         
-        this.checkout_btn = document.getElementById("checkout_btn");
-        this.clear_cart_btn = document.getElementById("clear_cart_btn");
+        this.checkout_btn = document.getElementById('checkout_btn');
+        this.clear_cart_btn = document.getElementById('clear_cart_btn');
     }
 
     getHash(){
@@ -64,10 +64,10 @@ export default class CartManager {
                 return urls.includes(product.url);
             });
             
-            let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
-            let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
-            let totalEl = document.getElementById("total");
-            let cartSection = document.getElementById("cart-dropdown");
+            let productNumberLabelEl1 = document.getElementById('productNumberLabel1');
+            let productNumberLabelEl2 = document.getElementById('productNumberLabel2');
+            let totalEl = document.getElementById('total');
+            let cartSection = document.getElementById('cart-dropdown');
 
             product2AddList.forEach(product => {
                 // Increase label
@@ -79,7 +79,7 @@ export default class CartManager {
 
                 // Increase Total
                 this.total += (product.price * product_amount);
-                totalEl.innerText = ("$ " + this.total.toFixed(2));
+                totalEl.innerText = ('$ ' + this.total.toFixed(2));
 
                 // Show Product
                 let amount = subHashes.filter(element => {
@@ -96,13 +96,13 @@ export default class CartManager {
 
         get_data().then(data => {
             let product2AddList = data.products.filter(product => {
-                return subHash === product.url
+                return subHash === product.url;
             });
             
             if (product2AddList != null){
-                let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
-                let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
-                let totalEl = document.getElementById("total");
+                let productNumberLabelEl1 = document.getElementById('productNumberLabel1');
+                let productNumberLabelEl2 = document.getElementById('productNumberLabel2');
+                let totalEl = document.getElementById('total');
 
                 
                 product2AddList.forEach(product => {
@@ -113,16 +113,16 @@ export default class CartManager {
 
                     // Increase Total
                     this.total += product.price;
-                    totalEl.innerText = ("$ " + this.total.toFixed(2));
+                    totalEl.innerText = ('$ ' + this.total.toFixed(2));
 
                     let countEl = document.getElementById(subHash);
                     let amount = this.getAmountFromLocalStorage(subHash);
-                    countEl.innerText = ("Quantity: " + amount);
+                    countEl.innerText = ('Quantity: ' + amount);
 
-            });
+                });
             }
             
-        })
+        });
     }
 
     getCartProductTemplate(product, amount){
@@ -136,18 +136,18 @@ export default class CartManager {
                     <span class="price text-info"> $${product.price}</span> <span class="count" id="${product.url}">Quantity: ${amount}</span>
                 </div>
             </div>
-        `
+        `;
     }
 
     loadCartFromLocalStorage(){
-        let cart_list = JSON.parse(localStorage.getItem("cart"));
-        let productNumberLabelEl1 = document.getElementById("productNumberLabel1");
-        let productNumberLabelEl2 = document.getElementById("productNumberLabel2");
-        let totalEl = document.getElementById("total");
-        let cartSection = document.getElementById("cart-dropdown");
+        let cart_list = JSON.parse(localStorage.getItem('cart'));
+        let productNumberLabelEl1 = document.getElementById('productNumberLabel1');
+        let productNumberLabelEl2 = document.getElementById('productNumberLabel2');
+        let totalEl = document.getElementById('total');
+        let cartSection = document.getElementById('cart-dropdown');
 
-        cartSection.innerHTML = "";
-        totalEl.innerText = "$ 0";
+        cartSection.innerHTML = '';
+        totalEl.innerText = '$ 0';
         productNumberLabelEl1.innerText = 0;
         productNumberLabelEl2.innerText = 0;
 
@@ -161,11 +161,11 @@ export default class CartManager {
     }
 
     addProductToLocalStorage(productUrl){
-        let cart_list = JSON.parse(localStorage.getItem("cart"));
+        let cart_list = JSON.parse(localStorage.getItem('cart'));
 
         if(!cart_list){
             cart_list = [];
-            cart_list.push({url: productUrl, amount: 1})
+            cart_list.push({url: productUrl, amount: 1});
             this.updateLocalStorageCart(cart_list);
             return true;
         }
@@ -176,7 +176,7 @@ export default class CartManager {
             if (element.url === productUrl){
                 element.amount++;
                 exist = true;
-                break
+                break;
             }
         }
         if (!exist){
@@ -189,7 +189,7 @@ export default class CartManager {
     }
 
     getAmountFromLocalStorage(url){
-        let cart_list = JSON.parse(localStorage.getItem("cart"));
+        let cart_list = JSON.parse(localStorage.getItem('cart'));
 
         for (let i = 0; i < cart_list.length; i++) {
             const element = cart_list[i];
@@ -200,11 +200,11 @@ export default class CartManager {
     }
 
     updateLocalStorageCart(newCart){
-        localStorage.setItem("cart", JSON.stringify(newCart));
+        localStorage.setItem('cart', JSON.stringify(newCart));
     }
 
     clearCart(){
-        localStorage.setItem("cart", JSON.stringify([]));
+        localStorage.setItem('cart', JSON.stringify([]));
         this.loadCartFromLocalStorage();
     }
     
